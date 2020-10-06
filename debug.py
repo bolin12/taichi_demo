@@ -18,6 +18,7 @@ def iterate():
     for i in range(n):
         x[i] = new_x[i]
 
+
 @ti.kernel
 def residual() ->ti.f32:
     res = 0.0
