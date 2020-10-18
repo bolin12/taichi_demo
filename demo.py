@@ -20,15 +20,21 @@ I = ti.Matrix([
             [1.0, 0.0],
             [0.0, 1.0]
         ])
+a = ti.Vector([1.0,2.0])
+# b = ti.Vector(1,ti.f32, shape=(2))
+# C = ti.Vector(1, dt=ti.f32, shape=2)
+
 @ti.kernel
 def demo():
-    # for i in range(int(total_num_particle)):
-    #     for j in range(int(total_num_particle)):
-        
-    #         J[i,j]=I
-    for i in range(int(total_num_particle)):
-        for j in range(int(total_num_particle)):
-            print(J[i,j])
+
+    b = a.outer_product(a)
+    print(b,b.n)
+    print(a.n)
+    print(a)
+    for i in ti.static(range(2)):
+        for j in ti.static(range(2)):
+            print(i,j, "-th component is", b[i,j])
 
 demo()
+
 
