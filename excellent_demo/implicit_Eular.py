@@ -85,7 +85,7 @@ def update_J():
                 x_ij = x[i] - x[j]
                 X_ij_bar = x_ij / x_ij.norm()
                 mat = X_ij_bar.outer_product(X_ij_bar)
-                J[i, d] += -k * (I - l_ij/x_ij.norm() * (I - mat))
+                J[i, d] += -k * (I - l_ij/x_ij.norm() * (I - mat)) 
                 if d==i:
                     J[i, d] *=  1.0
                 else: # d==j
