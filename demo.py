@@ -22,12 +22,12 @@ I = ti.Matrix([
         ])
 @ti.kernel
 def demo():
-    # for i in range(int(total_num_particle**0.5)):
-    #     for j in range(int(total_num_particle**0.5)):
+    # for i in range(int(total_num_particle)):
+    #     for j in range(int(total_num_particle)):
         
     #         J[i,j]=I
-    for i in range(int(total_num_particle**0.5)):
-        for j in range(int(total_num_particle**0.5)):
+    for i in range(int(total_num_particle)):
+        for j in range(int(total_num_particle)):
             print(J[i,j])
 
 demo()
