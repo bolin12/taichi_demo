@@ -96,9 +96,9 @@ while True:
                 damping[None] /= 1.1
             else:
                 damping[None] *= 1.1
-                
+    
     if not paused[None]:
-        for step in range(10):
+        for step in range(100):
             substep()
     
     X = x.to_numpy()

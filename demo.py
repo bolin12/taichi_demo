@@ -11,6 +11,24 @@ f = ti.Matrix(2,2, dt=ti.f32, shape=(total_num_particle, total_num_particle))
 A = ti.Matrix(2,2, dt=ti.f32, shape=(total_num_particle, total_num_particle))
 b = ti.Vector(2,dt=ti.f32, shape=total_num_particle)
 
+J = ti.Matrix(2,2, dt=ti.f32, shape=(total_num_particle, total_num_particle))
+
 dt = 1e-3
 m_1 = 1
+
+I = ti.Matrix([
+            [1.0, 0.0],
+            [0.0, 1.0]
+        ])
+@ti.kernel
+def demo():
+    # for i in range(int(total_num_particle**0.5)):
+    #     for j in range(int(total_num_particle**0.5)):
+        
+    #         J[i,j]=I
+    for i in range(int(total_num_particle**0.5)):
+        for j in range(int(total_num_particle**0.5)):
+            print(J[i,j])
+
+demo()
 

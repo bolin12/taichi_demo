@@ -6,7 +6,7 @@ ti.init(arch=ti.gpu)
 ## 系统参数 ===============================
 MAX_NUM_PARTICLES   = 256   # 最多质点数
 PARTICLE_MASS       = 1     # 质点质量
-BOTTOM_Y            = 0.05  # 地面位置
+BOTTOM_Y            = 0.25  # 地面位置
 CONNECTION_RADIUS   = 0.15  # 质点自动连接半径
 GRAVITY = ti.Vector([0, -9.8], dt=ti.f32) # 重力场
 dt = 1e-3                   # 时间步长
