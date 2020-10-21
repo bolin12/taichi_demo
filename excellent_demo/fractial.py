@@ -25,7 +25,7 @@ def paint(t: ti.f32, power: ti.i32):
         pixels[i, j] = 1 - iterations * 0.02
 
 power = eval(input("Power of z -> "))
-power = ti.var(dt=ti.i32, shape=(1))
+# power = ti.var(dt=ti.i32, shape=(1))
 
 gui = ti.GUI("Julia Set", res=(n * 2, n))
 

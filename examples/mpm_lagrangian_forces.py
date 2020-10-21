@@ -129,16 +129,16 @@ def g2p():
 
 
 gui = ti.GUI("MPM", (640, 640), background_color=0x112F41)
+pixels = ti.var(dt=ti.f32, shape=(640, 640,4))
 
 mesh = lambda i, j: i * n_particle_y + j
-
-
+frame_num=0
 def main():
     for i in range(n_particle_x):
         for j in range(n_particle_y):
             t = mesh(i, j)
             x[t] = [0.1 + i * dx * 0.5, 0.7 + j * dx * 0.5]
-            v[t] = [0, -1]
+            v[t] = [0, -10] #位移速度初始化
 
     # build mesh
     for i in range(n_particle_x - 1):
@@ -159,7 +159,7 @@ def main():
     vertices_ = vertices.to_numpy()
 
     while gui.running and not gui.get_event(gui.ESCAPE):
-        for s in range(50):
+        for s in range(20):
             grid_m.fill(0)
             grid_v.fill(0)
             # Note that we are now differentiating the total energy w.r.t. the particle position.
@@ -179,8 +179,17 @@ def main():
         gui.lines(particle_pos[a], particle_pos[b], radius=1, color=0x4FB99F)
         gui.circles(particle_pos, radius=1.5, color=0xF2B134)
         gui.line((0.00, 0.03), (1.0, 0.03), color=0xFFFFFF, radius=3)
+        
+        pixels=gui.get_image()
+        global frame_num
+        frame_num +=1
+        video_manager.write_frame(pixels)
         gui.show()
+        if frame_num==900:
+            break
 
 
 if __name__ == '__main__':
+    video_manager = ti.VideoManager(output_dir="mp4_folder", framerate=60, automatic_build=False)
     main()
+    video_manager.make_video(gif=True, mp4=True)
