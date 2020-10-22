@@ -31,6 +31,7 @@ total_energy = ti.field(dtype=float, shape=(), needs_grad=True)
 vertices = ti.field(dtype=ti.i32, shape=(n_elements, 3))
 
 
+
 @ti.func
 def compute_T(i):
     a = vertices[i, 0]
@@ -180,16 +181,16 @@ def main():
         gui.circles(particle_pos, radius=1.5, color=0xF2B134)
         gui.line((0.00, 0.03), (1.0, 0.03), color=0xFFFFFF, radius=3)
         
-        pixels=gui.get_image()
-        global frame_num
-        frame_num +=1
-        video_manager.write_frame(pixels)
+        # pixels=gui.get_image()
+        # global frame_num
+        # frame_num +=1
+        # video_manager.write_frame(pixels)
         gui.show()
-        if frame_num==900:
-            break
+        # if frame_num==900:
+        #     break
 
 
 if __name__ == '__main__':
-    video_manager = ti.VideoManager(output_dir="mp4_folder", framerate=60, automatic_build=False)
+    # video_manager = ti.VideoManager(output_dir="mp4_folder", framerate=60, automatic_build=False)
     main()
-    video_manager.make_video(gif=True, mp4=True)
+    # video_manager.make_video(gif=True, mp4=True)
